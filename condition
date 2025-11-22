@@ -1,0 +1,256 @@
+
+----------if condition----------------
+
+let isUserReady = confirm("Are you ready?");
+console.log(isUserReady);
+if (isUserReady) {
+    alert("User ready!");
+}
+
+-------------------------------------------------
+let unitPrice = 10;
+let pieces = prompt("How many pieces do you order?", 0);
+if (pieces > 0) {
+    let total = unitPrice * pieces;
+    console.log(total);
+}
+console.log(total); // -> Uncaught ReferenceError: total is not defined
+----------------------------------------------------------
+let userAge = 23;
+let isFemale = false;
+let points = 703;
+let cartValue = 299;
+let shippingCost = 9.99;
+ 
+if (userAge > 21) {
+    if (cartValue >= 300 || points >= 500) {
+        shippingCost = 0;
+    }
+}
+ 
+console.log(shippingCost);
+------------------------------------------------------------
+if (userAge > 21 && (cartValue >= 300 || points >= 500)) {
+    shippingCost = 0;
+}
+------------------if- else statements----------------------
+let isUserReady = confirm("Are you ready?");
+ 
+if (isUserReady) {
+    console.log("User ready!");
+}
+ 
+if (isUserReady == false) {
+    console.log("User not ready!");
+}
+----------------------------------------------------------
+let isUserReady = confirm("Are you ready?");
+ 
+if (isUserReady) {
+    console.log("User ready!");
+} else {
+    console.log("User not ready!");
+}
+-----------------if--else-if statements--------------------------------------
+let number = prompt("Enter a number", 0);
+ 
+if (number < 10) {
+    alert("<10");
+} else if (number < 30) {
+    alert("<30");
+} else if (number < 60) {
+    alert("<60");
+} else if (number < 90) {
+    alert("<90");
+} else if (number < 100) {
+    alert("<100");
+} else if (number == 100) {
+    alert("100")
+} else {
+    alert(">100")
+}
+
+const INSURANCE_COST = 2.99;
+
+let shippingCost = 9.99;
+let isOrderValid = true;
+
+let userAge = 22;
+let points = 400;
+let cartValue = 199;
+let hasPromoCode = false;
+let hasParentsApproval = false;
+let addInsurance = true;
+
+/** calculate shipping cost*/
+if ((userAge > 65) || (userAge >= 21 && (hasPromoCode || cartValue > 300 || points > 500))) {
+shippingCost = 0;
+} else if (userAge < 21 && hasParentsApproval) {
+shippingCost = shippingCost - 5;
+} else if (userAge < 21) {
+isOrderValid = false;
+}
+-------------------------------------------------------
+/** take account of insurance */
+if (isOrderValid && addInsurance && !hasPromoCode) {
+shippingCost += INSURANCE_COST;
+}
+
+/** show message */
+if (isOrderValid) {
+console.log(shippingCost);
+} else {
+console.log("Cannot order if under 21");
+}
+--------------conditional statement--------------------------------------------
+let price = 100;
+let shippingCost;
+if (price > 50) {
+    shippingCost = 0;
+} else {
+    shippingCost = 5;
+}
+console.log(`price = ${price}, shipping = ${shippingCost}`); // -> price = 100, shipping = 0
+------------------------------------------------------------------------
+let price = 100;
+let shippingCost = price > 50 ? 0 : 5;
+ 
+console.log(`price = ${price}, shipping = ${shippingCost}`); // -> price = 100, shipping = 0
+----------------------------------------------------------------------
+let start = confirm("Start?");
+start ? alert("Here we go!") : console.log("Aborted");
+------------------------------------------------------------
+let start = confirm("Start?");
+let message = start ? "Here we go!" "Aborted";
+alert(message);
+---------------Switch case statement----------------------------------------------
+let gate = prompt("Choose gate: a, b, or c");
+let win = false;
+ 
+switch (gate) {
+    case "a":
+        alert("Gate A: empty");
+        break;
+    case "b":
+        alert("Gate B: main prize");
+        win = true;
+        break;
+    case "c":
+        alert("Gate C: empty");
+        break;
+    default:
+        alert("No gate " + String(gate));
+}
+ 
+if (win) {
+    alert("Winner!");
+}
+-------------------------------------------------------------
+let contacts = [{
+    name: "Maxwell Wright",
+    phone: "(0191) 719 6495",
+    email: "Curabitur.egestas.nunc@nonummyac.co.uk"
+}, {
+    name: "Raja Villarreal",
+    phone: "0866 398 2895",
+    email: "posuere.vulputate@sed.com"
+}, {
+    name: "Helen Richards",
+    phone: "0800 1111",
+    email: "libero@convallis.edu"
+}];
+
+let number = prompt("Enter a random number");
+if(number > 90 && number < 110) {
+    alert("Bingo!");
+} else {
+    alert("Miss");
+}
+
+
+let number = prompt("Enter a random number");
+let message = (number > 90 && number < 110) ? "Bingo!": "Miss";
+alert(message);
+
+
+let firstNumber = Number(prompt("Enter first number"));
+let secondNumber = Number(prompt("Enter second number"));
+let operand = prompt("Enter operand (+, -, * or /)");
+let result;
+
+if (!Number.isNaN(firstNumber) && !Number.isNaN(secondNumber)) {
+    switch (operand) {
+        case "+": result = firstNumber + secondNumber; break;
+        case "-": result = firstNumber - secondNumber; break;
+        case "*": result = firstNumber * secondNumber; break;
+        case "/": result = firstNumber / secondNumber; break;
+        default: result = "Error: unknown operand";
+    }
+} else {
+    result = "Error: at least one of the entered values is not a number";
+}
+alert(result);
+
+---------------------While loop-------------------------------------
+let n = 0;
+while(n < 91) {
+    console.log(n); // -> 0, 10, 20, 30, 40, 50, 60, 70, 80, 90
+    n += 10;
+}
+---------------------------------------------------------------
+let isOver = false;
+let counter = 1;
+ 
+while (isOver != true) {
+    let continueLoop = confirm(`[${counter}] Continue the loop?`);
+    isOver = continueLoop === true ? false : true;
+    counter = counter + 1;
+}
+-----------------do while loop-----------------------------------
+let isOver;
+let counter = 1;
+ 
+do {
+    isOver = !confirm(`[${counter++}] Continue the loop?`);
+} while (!isOver);
+----------------------for loop---------------------------------------
+for (let i = 0; i < 10; i++) {
+    console.log(i);
+}
+------
+
+let i = 0;
+while (i < 10) {
+    console.log(i);
+i++;
+}
+-------
+let values = [10, 30, 50, 100];
+let sum = 0;
+for (let i = 0; i < 4; i++) {
+    sum += values[i];
+}
+console.log(sum); // -> 190
+---------
+let values = [10, 30, 50, 100];
+let sum = 0;
+for (let i = 0; i < values.length; i++) {
+    sum += values[i];
+}
+console.log(sum); // -> 190
+--------------loops & arrays------------------------
+let names = [];
+let isOver = false;
+while (!isOver) {
+    let name = prompt("Enter another name or press cancel.");
+    if (name != null) {
+        names.push(name);
+    } else {
+        isOver = true;
+    }
+}
+ 
+for (let i = 0; i < names.length; i++){
+    console.log(names[i]);
+}
+
